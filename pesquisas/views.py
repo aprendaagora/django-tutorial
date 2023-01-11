@@ -4,4 +4,4 @@ from django.http import HttpResponse
 # Create your views here.
 
 def inicio(request):
-  return HttpResponse("Olá, mundo. Você está na página inicial da eleição.")
+  return HttpResponse("Olá, mundo. Você está na página inicial da pesquisa.")
