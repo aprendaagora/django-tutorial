@@ -3,6 +3,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from django.views import generic
 from .models import Pergunta, Opcao
+from django.utils import timezone
 
 # Create your views here.
 
@@ -11,11 +12,14 @@ class RotaInicio(generic.ListView):
   context_object_name = 'ultimas_perguntas'
 
   def get_queryset(self):
-    return Pergunta.objects.order_by('-data_publicacao')[:5]
+    return Pergunta.objects.filter(data_publicacao__lte=timezone.now()).order_by('-data_publicacao')[:5]
 
 class RotaDetalhes(generic.DetailView):
   model = Pergunta
   template_name = 'pesquisas/detalhes.html'
+
+  def get_queryset(self):
+    return Pergunta.objects.filter(data_publicacao__lte=timezone.now())
 
 class RotaResultados(generic.DetailView):
   model = Pergunta
