@@ -4,8 +4,8 @@ from . import views
 
 app_name = 'pesquisas'
 urlpatterns = [
-  path('', views.inicio, name='inicio'),
-  path('<int:pergunta_id>/', views.detalhes, name='detalhes'),
-  path('<int:pergunta_id>/resultados/', views.resultados, name='resultados'),
+  path('', views.RotaInicio.as_view(), name='inicio'),
+  path('<int:pk>/', views.RotaDetalhes.as_view(), name='detalhes'),
+  path('<int:pk>/resultados/', views.RotaResultados.as_view(), name='resultados'),
   path('<int:pergunta_id>/votar/', views.votar, name='votar')
 ]
