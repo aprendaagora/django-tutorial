@@ -1,9 +1,17 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'pesquisas/estilo.css' %}" />
+
 {% if ultimas_perguntas %}
-    <ul>
-    {% for pergunta in ultimas_perguntas %}
-        <li><a href="{% url 'pesquisas:detalhes' pergunta.id %}">{{ pergunta.texto_pergunta }}</a></li>
-    {% endfor %}
-    </ul>
+<ul>
+  {% for pergunta in ultimas_perguntas %}
+  <li>
+    <a href="{% url 'pesquisas:detalhes' pergunta.id %}"
+      >{{ pergunta.texto_pergunta }}</a
+    >
+  </li>
+  {% endfor %}
+</ul>
 {% else %}
-    <p>Não há perguntas.</p>
+<p>Não há perguntas.</p>
 {% endif %}
